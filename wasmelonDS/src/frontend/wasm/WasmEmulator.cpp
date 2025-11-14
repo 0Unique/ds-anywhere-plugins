@@ -162,8 +162,6 @@ namespace wasmelon {
     touchX = x;
     touchY = y;
     isTouching = true;
-
-    emuInstance->pluginManager->clickBottomScreen(x, y); //TODO: top screen click
   }
 
   void WasmEmulator::releaseScreen() {
@@ -231,19 +229,19 @@ namespace wasmelon {
 
 
   void ARM9step(void* self, unsigned int addr){
-    WasmEmulator* emu = (PluginManager*)self;
+    WasmEmulator* emu = (WasmEmulator*)self;
     if (!arm9stepCallback.isUndefined() && !arm9stepCallback.isNull())
         emu->arm9stepCallback(addr);
   }
 
   void ARM9read(void* self, unsigned int addr, unsigned char size){
-    WasmEmulator* emu = (PluginManager*)self;
+    WasmEmulator* emu = (WasmEmulator*)self;
     if (!arm9readCallback.isUndefined() && !arm9readCallback.isNull())
         emu->arm9readCallback(addr, size);
   }
 
   void ARM9write(void* self, unsigned int addr, unsigned char size, void* value){
-    WasmEmulator* emu = (PluginManager*)self;
+    WasmEmulator* emu = (WasmEmulator*)self;
     if (!arm9writeCallback.isUndefined() && !arm9writeCallback.isNull())
         emu->arm9writeCallback(addr, size, value);
   }
