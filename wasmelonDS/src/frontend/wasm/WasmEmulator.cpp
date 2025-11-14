@@ -279,9 +279,9 @@ EMSCRIPTEN_BINDINGS(WasmEmulator) {
     .function("releaseScreen", &wasmelon::WasmEmulator::releaseScreen)
     .function("setInput", &wasmelon::WasmEmulator::setInput)
     .function("getCartTitle", &wasmelon::WasmEmulator::getCartTitle)
+  .function("setARM9stepCallback", &wasmelon::WasmEmulator::setARM9stepCallback)
+  .function("setARM9readCallback", &wasmelon::WasmEmulator::setARM9readCallback)
+  .function("setARM9writeCallback", &wasmelon::WasmEmulator::setARM9writeCallback)
   //.function("getEmuPtr", &wasmelon::WasmEmulator::getEmuPtr, emscripten::allow_raw_pointers())
-  //.function("setARM9stepCallback", &wasmelon::WasmEmulator::setARM9stepCallback)
-  //.function("setARM9readCallback", &wasmelon::WasmEmulator::setARM9readCallback)
-  //.function("setARM9writeCallback", &wasmelon::WasmEmulator::setARM9writeCallback)
   ;
 }
