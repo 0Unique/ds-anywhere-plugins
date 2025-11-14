@@ -650,7 +650,7 @@ void ARMv5::Execute()
         else
 #endif
         {
-            PM9step(PM_ptr, R[15]);
+            //PM9step(PM_ptr, R[15]);
 
             if (CPSR & 0x20) // THUMB
             {

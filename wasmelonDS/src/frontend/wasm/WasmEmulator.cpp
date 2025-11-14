@@ -45,13 +45,11 @@ namespace wasmelon {
   void WasmEmulator::initialize(bool direct) {
     nds->Reset();
 
-    Platform::Log(Platform::LogLevel::Debug, "test4\n");
     nds->ARM9.PM9step = ARM9step;
     nds->ARM9.PM_ptr = this;
     nds->PM_ptr = this;
     nds->PM9read = ARM9read;
     nds->PM9write = ARM9write;
-    Platform::Log(Platform::LogLevel::Debug, "test5\n");
 
     if (direct) {
       nds->SetupDirectBoot("game");
@@ -231,22 +229,18 @@ namespace wasmelon {
 
 
   void ARM9step(void* self, unsigned int addr){
-
-      Platform::Log(Platform::LogLevel::Debug, "test1\n");
     WasmEmulator* emu = (WasmEmulator*)self;
     if (!emu->arm9stepCallback.isUndefined() && !emu->arm9stepCallback.isNull())
         emu->arm9stepCallback(addr);
   }
 
   void ARM9read(void* self, unsigned int addr, unsigned char size){
-      Platform::Log(Platform::LogLevel::Debug, "test2\n");
     WasmEmulator* emu = (WasmEmulator*)self;
     if (!emu->arm9readCallback.isUndefined() && !emu->arm9readCallback.isNull())
         emu->arm9readCallback(addr, size);
   }
 
   void ARM9write(void* self, unsigned int addr, unsigned char size, void* value){
-      Platform::Log(Platform::LogLevel::Debug, "test3\n");
     WasmEmulator* emu = (WasmEmulator*)self;
     if (!emu->arm9writeCallback.isUndefined() && !emu->arm9writeCallback.isNull())
         emu->arm9writeCallback(addr, size, value);

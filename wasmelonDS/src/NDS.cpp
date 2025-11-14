@@ -2055,7 +2055,7 @@ void NDS::debug(u32 param)
 
 u8 NDS::ARM9Read8(u32 addr)
 {
-    PM9read(PM_ptr, addr, 8);
+    //PM9read(PM_ptr, addr, 8);
 
     if ((addr & 0xFFFFF000) == 0xFFFF0000)
     {
@@ -2116,7 +2116,7 @@ u8 NDS::ARM9Read8(u32 addr)
 
 u16 NDS::ARM9Read16(u32 addr)
 {
-    PM9read(PM_ptr, addr, 16);
+    //PM9read(PM_ptr, addr, 16);
 
     addr &= ~0x1;
 
@@ -2178,7 +2178,7 @@ u16 NDS::ARM9Read16(u32 addr)
 
 u32 NDS::ARM9Read32(u32 addr)
 {
-    PM9read(PM_ptr, addr, 32);
+    //PM9read(PM_ptr, addr, 32);
 
     addr &= ~0x3;
 
@@ -2243,7 +2243,7 @@ u32 NDS::ARM9Read32(u32 addr)
 
 void NDS::ARM9Write8(u32 addr, u8 val)
 {
-    PM9write(PM_ptr, addr, 8, &val);
+    //PM9write(PM_ptr, addr, 8, &val);
 
     switch (addr & 0xFF000000)
     {
@@ -2284,7 +2284,7 @@ void NDS::ARM9Write8(u32 addr, u8 val)
 
 void NDS::ARM9Write16(u32 addr, u16 val)
 {
-    PM9write(PM_ptr, addr, 16, &val);
+    //PM9write(PM_ptr, addr, 16, &val);
 
     addr &= ~0x1;
 
@@ -2346,7 +2346,7 @@ void NDS::ARM9Write16(u32 addr, u16 val)
 
 void NDS::ARM9Write32(u32 addr, u32 val)
 {
-    PM9write(PM_ptr, addr, 32, &val);
+    //PM9write(PM_ptr, addr, 32, &val);
 
     addr &= ~0x3;
 
