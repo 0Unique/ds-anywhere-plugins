@@ -61,9 +61,9 @@ namespace wasmelon {
 
     std::string getCartTitle();
 
-    void (*ARM9step)(unsigned int);
-    void (*ARM9read)(unsigned int, unsigned char);
-    void (*ARM9write)(unsigned int, unsigned char, void*);
+    void (*ARM9step)(void*, unsigned int);
+    void (*ARM9read)(void*, unsigned int, unsigned char);
+    void (*ARM9write)(void*, unsigned int, unsigned char, void*);
 
     emscripten::val arm9stepCallback = emscripten::val::undefined();
     emscripten::val arm9readCallback = emscripten::val::undefined();
