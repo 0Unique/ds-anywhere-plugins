@@ -233,19 +233,19 @@ namespace wasmelon {
   void ARM9step(void* self, unsigned int addr){
     WasmEmulator* emu = (PluginManager*)self;
     if (!arm9stepCallback.isUndefined() && !arm9stepCallback.isNull())
-        emu.arm9stepCallback(addr);
+        emu->arm9stepCallback(addr);
   }
 
   void ARM9read(void* self, unsigned int addr, unsigned char size){
     WasmEmulator* emu = (PluginManager*)self;
     if (!arm9readCallback.isUndefined() && !arm9readCallback.isNull())
-        emu.arm9readCallback(addr, size);
+        emu->arm9readCallback(addr, size);
   }
 
   void ARM9write(void* self, unsigned int addr, unsigned char size, void* value){
     WasmEmulator* emu = (PluginManager*)self;
     if (!arm9writeCallback.isUndefined() && !arm9writeCallback.isNull())
-        emu.arm9writeCallback(addr, size, value);
+        emu->arm9writeCallback(addr, size, value);
   }
 
   void setARM9stepCallback(emscripten::val callback) {
