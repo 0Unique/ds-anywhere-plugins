@@ -223,8 +223,8 @@ namespace wasmelon {
     return converter.to_bytes(englishUtf16Title);
   }
 
-  void* WasmEmulator::getEmuPtr() {
-    return (void*)this;
+  long long WasmEmulator::getEmuPtr() {
+    return (long long)this;
   }
 
 
@@ -282,6 +282,6 @@ EMSCRIPTEN_BINDINGS(WasmEmulator) {
   .function("setARM9stepCallback", &wasmelon::WasmEmulator::setARM9stepCallback)
   .function("setARM9readCallback", &wasmelon::WasmEmulator::setARM9readCallback)
   .function("setARM9writeCallback", &wasmelon::WasmEmulator::setARM9writeCallback)
-  //.function("getEmuPtr", &wasmelon::WasmEmulator::getEmuPtr, emscripten::allow_raw_pointers())
+  .function("getEmuPtr", &wasmelon::WasmEmulator::getEmuPtr)
   ;
 }

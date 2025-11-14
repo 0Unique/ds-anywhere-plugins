@@ -61,7 +61,7 @@ namespace wasmelon {
 
     std::string getCartTitle();
 
-    void* getEmuPtr();
+    long long getEmuPtr();
 
     void (*ARM9step)(void*, unsigned int);
     void (*ARM9read)(void*, unsigned int, unsigned char);
