@@ -7,10 +7,7 @@ export default function Noclip(): any {
         <h1>test</h1>
       </div>
       <script src="static/test.js"></script>
-      <script>
-        let plug = await Noclip({wasmMemory: wasmMemory});
-        plug.init_emu(window.WebMelon._internal.emulator.getEmuPtr())
-      </script>
+      <script src="static/load_noclip_plugin.js"></script>
     </>
   );
 }
