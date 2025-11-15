@@ -14,8 +14,7 @@ export default function PluginContainer(): any {
     if (elem != null) {
       var pz = Panzoom(elem, {
         zoomDoubleClickSpeed: 1, // disables zoom on double click
-        noBind: true,
-        disableZoom: false,
+        noBind: false,
       });
 
       var selectedWindow: HTMLElement | null = null;
@@ -41,7 +40,7 @@ export default function PluginContainer(): any {
             const currentLeft = parseInt(selectedWindow.style.left) || 0;
             const newLeft = currentLeft + mouseX - prevX;
             selectedWindow.style.left = `${newLeft}px`;
-            const currentTop = parseInt(selectedWindow.style.left) || 0;
+            const currentTop = parseInt(selectedWindow.style.top) || 0;
             const newTop = currentTop + mouseY - prevY;
             selectedWindow.style.top = `${newTop}px`;
           }
