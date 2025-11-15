@@ -1,4 +1,4 @@
-import "./main.css";
+import "./pluginContainer.css";
 
 import Noclip from "../plugins/noclip/src/main";
 
