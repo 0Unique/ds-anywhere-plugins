@@ -40,12 +40,12 @@ export function Main() {
             />
           )}
         </div>
-        <script>
-          var element = document.querySelector('#full-container');
-          panzoom(element);
-        </script>
       </div>
       <SettingsModal showing={settingsOpen} onClose={onCloseSettings} />
+      <script>
+        var element = document.querySelector('#full-container');
+        panzoom(element);
+      </script>
     </>
   );
 }
