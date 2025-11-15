@@ -1,7 +1,7 @@
 let pluginContainer = document.querySelector("#plugin-container");
 
-var element = document.querySelector(".full-container");
-const pz = panzoom(element, {
+var elem = document.querySelector(".full-container");
+const pz = panzoom(elem, {
   zoomDoubleClickSpeed: 1, // disables zoom on double click
   noBind: true,
 });
