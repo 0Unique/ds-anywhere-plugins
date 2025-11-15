@@ -1,8 +1,55 @@
 import "./pluginContainer.css";
 
+import Panzoom from "@panzoom/panzoom";
+
 import Noclip from "../plugins/noclip/main";
+import { useEffect } from "preact/hooks";
 
 export default function PluginContainer(): any {
+  useEffect(() => {
+    let pluginContainer = document.querySelector("#plugin-container");
+
+    var elem: HTMLElement | SVGElement | null =
+      document.querySelector(".full-container");
+    if (elem != null) {
+      const pz = Panzoom(elem, {
+        zoomDoubleClickSpeed: 1, // disables zoom on double click
+        noBind: true,
+      });
+
+      var selectedWindow = null;
+      var prevX = 0;
+      var prevY = 0;
+
+      elem.addEventListener("pointerdown", (event) => {
+        if (event.ctrlKey) {
+          selectedWindow = event.target;
+        } else {
+          pz.handleDown(event);
+        }
+      });
+      document.addEventListener("pointermove", (event) => {
+        if (event.ctrlKey && selectedWindow != null) {
+          const mouseX = event.clientX;
+          const mouseY = event.clientY;
+          if (prevX != 0 && prevY != 0) {
+            selectedWindow.style.left += mouseX - prevX;
+            selectedWindow.style.top += mouseY - prevY;
+          }
+          prevX = mouseX;
+          prevY = mouseY;
+        } else {
+          pz.handleMove(event);
+        }
+      });
+      document.addEventListener("pointerup", pz.handleUp);
+      document.addEventListener("pointerup", (event) => {
+        selectedWindow = null;
+        pz.handleUp(event);
+      });
+    }
+  }, []);
+
   return (
     <>
       <div id="plugin-container">
