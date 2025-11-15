@@ -230,7 +230,7 @@ namespace wasmelon {
 
   void ARM9step(void* self, unsigned int addr){
     WasmEmulator* emu = (WasmEmulator*)self;
-    if (!emu->isUndefined() && !emu->isNull())
+    if (emu != null)
         EM_ASM({
             window.WebMelon._internal.events.arm9step($0);
         }, addr);
@@ -238,7 +238,7 @@ namespace wasmelon {
 
   void ARM9read(void* self, unsigned int addr, unsigned char size){
     WasmEmulator* emu = (WasmEmulator*)self;
-    if (!emu->isUndefined() && !emu->isNull())
+    if (emu != null)
         EM_ASM({
             window.WebMelon._internal.events.arm9read($0, $1);
         }, addr, size);
@@ -246,7 +246,7 @@ namespace wasmelon {
 
   void ARM9write(void* self, unsigned int addr, unsigned char size, void* value){
     WasmEmulator* emu = (WasmEmulator*)self;
-    if (!emu->isUndefined() && !emu->isNull())
+    if (emu != null)
         EM_ASM({
             window.WebMelon._internal.events.arm9write($0, $1, $2);
         }, addr, size, *(long long*)value);
