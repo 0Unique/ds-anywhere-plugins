@@ -44,7 +44,11 @@ export function Main() {
       <SettingsModal showing={settingsOpen} onClose={onCloseSettings} />
       <script>
         var element = document.querySelector('.demo-page-container');
-        panzoom(element);
+        panzoom(element, {
+          onDoubleClick: function(e) {
+            return false; // stops double click zoom
+          }
+        });
       </script>
     </>
   );

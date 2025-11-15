@@ -51,13 +51,13 @@ p {
 }
 
 .demo-page-container {
-    padding-top: 5vh;
+    padding: 2vh 0;
     margin: auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
     text-align: center;
-    width: 40vw;
+    width: 550px;
     max-width: 100%;
     min-width: 350px;
     background-color: lightgray;
