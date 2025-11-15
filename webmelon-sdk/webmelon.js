@@ -180,6 +180,29 @@
           WebMelon._internal.storage.isSaving = true;
           setTimeout(WebMelon.storage.sync, 500);
         },
+        arm9step: (addr) => {
+          if (window.hasOwnProperty("plugins")) {
+            for (plugin of window.plugins) {
+              if (plugin.hasOwnProperty("arm9step")) plugin.arm9step(addr);
+            }
+          }
+        },
+        arm9read: (addr, size) => {
+          if (window.hasOwnProperty("plugins")) {
+            for (plugin of window.plugins) {
+              if (plugin.hasOwnProperty("arm9read"))
+                plugin.arm9read(addr, size);
+            }
+          }
+        },
+        arm9write: (addr, size, value) => {
+          if (window.hasOwnProperty("plugins")) {
+            for (plugin of window.plugins) {
+              if (plugin.hasOwnProperty("arm9write"))
+                plugin.arm9write(addr, size, value);
+            }
+          }
+        },
       },
       firmwareSettings: {
         nickname: "Player",
@@ -649,7 +672,7 @@
         );
         WebMelon._internal.emulator.processFrame(false);
         for (plugin of window.plugins) {
-          plugin.perFrame();
+          if (plugin.hasOwnProperty("perFrame")) plugin.perFrame();
         }
         WebMelon.input.processRumble();
         emulatorFrameRunning = false;

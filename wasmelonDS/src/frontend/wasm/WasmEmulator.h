@@ -67,14 +67,6 @@ namespace wasmelon {
     void (*ARM9read)(void*, unsigned int, unsigned char);
     void (*ARM9write)(void*, unsigned int, unsigned char, void*);
 
-    emscripten::val arm9stepCallback = emscripten::val::undefined();
-    emscripten::val arm9readCallback = emscripten::val::undefined();
-    emscripten::val arm9writeCallback = emscripten::val::undefined();
-
-    void setARM9stepCallback(emscripten::val callback);
-    void setARM9readCallback(emscripten::val callback);
-    void setARM9writeCallback(emscripten::val callback);
-
   };
 }
 

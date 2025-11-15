@@ -231,31 +231,25 @@ namespace wasmelon {
   void ARM9step(void* self, unsigned int addr){
     WasmEmulator* emu = (WasmEmulator*)self;
     if (!emu->arm9stepCallback.isUndefined() && !emu->arm9stepCallback.isNull())
-        emu->arm9stepCallback(addr);
+        EM_ASM({
+            window.WebMelon._internal.events.arm9step($0);
+        }, addr);
   }
 
   void ARM9read(void* self, unsigned int addr, unsigned char size){
     WasmEmulator* emu = (WasmEmulator*)self;
     if (!emu->arm9readCallback.isUndefined() && !emu->arm9readCallback.isNull())
-        emu->arm9readCallback(addr, size);
+        EM_ASM({
+            window.WebMelon._internal.events.arm9read($0, $1);
+        }, addr, size);
   }
 
   void ARM9write(void* self, unsigned int addr, unsigned char size, void* value){
     WasmEmulator* emu = (WasmEmulator*)self;
     if (!emu->arm9writeCallback.isUndefined() && !emu->arm9writeCallback.isNull())
-        emu->arm9writeCallback(addr, size, value);
-  }
-
-  void WasmEmulator::setARM9stepCallback(emscripten::val callback) {
-    arm9stepCallback = callback;
-  }
-
-  void WasmEmulator::setARM9readCallback(emscripten::val callback) {
-    arm9readCallback = callback;
-  }
-
-  void WasmEmulator::setARM9writeCallback(emscripten::val callback) {
-    arm9writeCallback = callback;
+        EM_ASM({
+            window.WebMelon._internal.events.arm9write($0, $1, $2);
+        }, addr, size, *(long long*)value);
   }
 
 }
@@ -279,9 +273,6 @@ EMSCRIPTEN_BINDINGS(WasmEmulator) {
     .function("releaseScreen", &wasmelon::WasmEmulator::releaseScreen)
     .function("setInput", &wasmelon::WasmEmulator::setInput)
     .function("getCartTitle", &wasmelon::WasmEmulator::getCartTitle)
-    .function("setARM9stepCallback", &wasmelon::WasmEmulator::setARM9stepCallback)
-    .function("setARM9readCallback", &wasmelon::WasmEmulator::setARM9readCallback)
-    .function("setARM9writeCallback", &wasmelon::WasmEmulator::setARM9writeCallback)
     .function("getEmuPtr", &wasmelon::WasmEmulator::getEmuPtr)
   ;
 }
