@@ -60,6 +60,9 @@ p {
     width: 40vw;
     max-width: 100%;
     min-width: 350px;
+    background-color: lightgray;
+    border: 2px solid black;
+    border-radius: 20px;
 }
 
 .play-button {

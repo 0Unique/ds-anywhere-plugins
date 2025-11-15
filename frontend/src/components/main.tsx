@@ -43,7 +43,7 @@ export function Main() {
       </div>
       <SettingsModal showing={settingsOpen} onClose={onCloseSettings} />
       <script>
-        var element = document.querySelector('.full-container');
+        var element = document.querySelector('.demo-page-container');
         panzoom(element);
       </script>
     </>
