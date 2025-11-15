@@ -37,16 +37,16 @@ export default function PluginContainer(): any {
           const mouseY = event.clientY;
           if (prevX != 0 && prevY != 0) {
             const currentLeft = parseInt(selectedWindow.style.left) || 0;
-            var scaleX =
+            var scale =
               selectedWindow.getBoundingClientRect().width /
               selectedWindow.offsetWidth;
-            const newLeft = currentLeft + (mouseX - prevX) * scaleX;
-            selectedWindow.style.left = `${newLeft * scaleX}px`;
+            const newLeft = currentLeft + (mouseX - prevX) / scale;
+            selectedWindow.style.left = `${newLeft}px`;
             const currentTop = parseInt(selectedWindow.style.top) || 0;
             var scaleY =
               selectedWindow.getBoundingClientRect().height /
               selectedWindow.offsetHeight;
-            const newTop = currentTop + (mouseY - prevY) * scaleY;
+            const newTop = currentTop + (mouseY - prevY) / scale;
             selectedWindow.style.top = `${newTop}px`;
           }
           prevX = mouseX;
