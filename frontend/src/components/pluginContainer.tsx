@@ -12,9 +12,10 @@ export default function PluginContainer(): any {
     var elem: HTMLElement | SVGElement | null =
       document.querySelector(".full-container");
     if (elem != null) {
-      const pz = Panzoom(elem, {
+      var pz = Panzoom(elem, {
         zoomDoubleClickSpeed: 1, // disables zoom on double click
         noBind: true,
+        disableZoom: false,
       });
 
       var selectedWindow: HTMLElement | null = null;
@@ -41,7 +42,7 @@ export default function PluginContainer(): any {
             const newLeft = currentLeft + mouseX - prevX;
             selectedWindow.style.left = `${newLeft}px`;
             const currentTop = parseInt(selectedWindow.style.left) || 0;
-            const newTop = currentTop + mouseX - prevX;
+            const newTop = currentTop + mouseY - prevY;
             selectedWindow.style.top = `${newTop}px`;
           }
           prevX = mouseX;
