@@ -14,7 +14,7 @@ export default function PluginContainer(): any {
     if (elem != null) {
       var pz = Panzoom(elem, {
         zoomDoubleClickSpeed: 1, // disables zoom on double click
-        noBind: false,
+        noBind: true,
       });
 
       var selectedWindow: HTMLElement | null = null;

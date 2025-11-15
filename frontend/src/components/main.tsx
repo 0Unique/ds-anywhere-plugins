@@ -4,7 +4,7 @@ import Emulator from "./emulator";
 import Entrypoint from "./entrypoint";
 import SettingsModal from "./settings";
 
-import PluginContainer from "./pluginContainer";
+//import PluginContainer from "./pluginContainer";
 
 export function Main() {
   const [emulating, setEmulating] = useState(false);
@@ -42,8 +42,6 @@ export function Main() {
             />
           )}
         </div>
-
-        {emulating ? <PluginContainer /> : ""}
       </div>
       <SettingsModal showing={settingsOpen} onClose={onCloseSettings} />
       <script src="static/setup.js"></script>
