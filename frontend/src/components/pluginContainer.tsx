@@ -2,35 +2,38 @@ import "./pluginContainer.css";
 
 import Panzoom from "@panzoom/panzoom";
 
-//import Noclip from "../plugins/noclip/main";
+import Noclip from "../plugins/noclip/main";
 import { useEffect } from "preact/hooks";
 
 export default function PluginContainer(): any {
   useEffect(() => {
-    //let pluginContainer = document.querySelector("#plugin-container");
+    let pluginContainer = document.querySelector("#plugin-container");
 
     var elem: HTMLElement | SVGElement | null =
-      document.querySelector(".testc");
-    if (elem != null) {
-      var pz = Panzoom(elem, {
+      document.querySelector(".full-container");
+    if (elem != null && pluginContainer != null) {
+      Panzoom(elem, {
         zoomDoubleClickSpeed: 1, // disables zoom on double click
-        noBind: true,
+        beforeMouseDown: function (e: Event) {
+          // allow mouse-down panning only if altKey is down. Otherwise - ignore
+          var shouldIgnore = !(e as PointerEvent).ctrlKey;
+          return shouldIgnore;
+        },
       });
 
       var selectedWindow: HTMLElement | null = null;
       var prevX = 0;
       var prevY = 0;
 
-      elem.addEventListener("pointerdown", (evt: Event) => {
+      pluginContainer.addEventListener("pointerdown", (evt: Event) => {
         let event = evt as PointerEvent;
         if (event.ctrlKey) {
           selectedWindow = event.target as HTMLElement | null;
           console.log("selected elem: " + selectedWindow);
-        } else {
-          pz.handleDown(event);
         }
       });
-      document.addEventListener("pointermove", (event) => {
+      pluginContainer.addEventListener("pointermove", (evt) => {
+        let event = evt as PointerEvent;
         if (event.ctrlKey && selectedWindow != null) {
           const mouseX = event.clientX;
           const mouseY = event.clientY;
@@ -46,20 +49,19 @@ export default function PluginContainer(): any {
           }
           prevX = mouseX;
           prevY = mouseY;
-        } else {
-          pz.handleMove(event);
         }
       });
-      document.addEventListener("pointerup", (event) => {
+      pluginContainer.addEventListener("pointerup", (_) => {
         selectedWindow = null;
-        pz.handleUp(event);
       });
     }
   }, []);
 
   return (
     <>
-      <div id="plugin-container"></div>
+      <div id="plugin-container">
+        <Noclip />
+      </div>
 
       <script src="static/plugins-loaded.js"></script>
     </>
