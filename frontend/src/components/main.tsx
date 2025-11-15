@@ -42,10 +42,10 @@ export function Main() {
             />
           )}
         </div>
+        {emulating ? <Noclip /> : ""}
       </div>
       <SettingsModal showing={settingsOpen} onClose={onCloseSettings} />
-      <Noclip />
-      <script src="static/panzoom.js"></script>
+      <script src="static/setup.js"></script>
     </>
   );
 }

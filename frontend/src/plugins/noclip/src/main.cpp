@@ -11,11 +11,6 @@ void init_emu(long long emu_addr) {
     emu = reinterpret_cast<wasmelon::WasmEmulator *>(emu_addr);
 }
 
-
-void get_player_pos() {
-
-}
-
 unsigned int get_x() {
     return *(unsigned int*)&emu->nds->MainRAM[0x143b20];
 }
