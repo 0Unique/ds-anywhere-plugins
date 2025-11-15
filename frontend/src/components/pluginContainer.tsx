@@ -28,6 +28,7 @@ export default function PluginContainer(): any {
         let event = evt as PointerEvent;
         if (event.ctrlKey) {
           selectedWindow = event.target as HTMLElement | null;
+          if (selectedWindow != null) selectedWindow.style.userSelect = "None";
         }
       });
       document.addEventListener("pointermove", (evt) => {
@@ -52,6 +53,7 @@ export default function PluginContainer(): any {
         }
       });
       document.addEventListener("pointerup", (_) => {
+        if (selectedWindow != null) selectedWindow.style.userSelect = "text";
         selectedWindow = null;
         prevX = 0;
         prevY = 0;
