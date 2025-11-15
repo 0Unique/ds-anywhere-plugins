@@ -4,7 +4,7 @@ import Emulator from "./emulator";
 import Entrypoint from "./entrypoint";
 import SettingsModal from "./settings";
 
-import pluginContainer from ./pluginContainer";
+import pluginContainer from "./pluginContainer";
 
 export function Main() {
   const [emulating, setEmulating] = useState(false);

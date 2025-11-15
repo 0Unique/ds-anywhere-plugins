@@ -3,5 +3,12 @@
         background-color: lightgray;
         border: 2px solid black;
         border-radius: 20px;
+        position: relative;
+        left: 0px;
+        right: 0px;
+
+        & * {
+            pointer-events: none !important;
+        }
     }
 }
