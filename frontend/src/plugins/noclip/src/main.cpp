@@ -1,3 +1,7 @@
+#include <emscripten/bind.h>
+
+using namespace emscripten;
+
 #include "WasmEmulator.h"
 #include "NDS.h"
 
@@ -34,4 +38,10 @@ void frame(){
         if (rightPress) playerX += speed;
         window->ui->posLabel->setText(QString::fromStdString("(" + std::to_string(playerX) + ", " + std::to_string(playerY) + ")"));
         }*/
+}
+
+
+
+EMSCRIPTEN_BINDINGS(my_module) {
+    function("init_emu", &init_emu);
 }
