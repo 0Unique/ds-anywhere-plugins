@@ -20,10 +20,12 @@ export function Main() {
 
   const onOpenSettings = () => {
     setSettingsOpen(true);
+    window.settingsOpen = true;
   };
 
   const onCloseSettings = () => {
     setSettingsOpen(false);
+    window.settingsOpen = false;
   };
 
   return (
