@@ -42,17 +42,7 @@ export function Main() {
         </div>
       </div>
       <SettingsModal showing={settingsOpen} onClose={onCloseSettings} />
-      <script>
-        type fuck = {onDoubleClick: Function};
-        var options: fuck = {
-            onDoubleClick: (e) => {
-                return false;
-            }
-        };
-
-        var element = document.querySelector('.demo-page-container');
-        panzoom(element, options);
-      </script>
+      <script src="static/panzoom.js"></script>
     </>
   );
 }
