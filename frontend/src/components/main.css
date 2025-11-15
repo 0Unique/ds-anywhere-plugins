@@ -51,7 +51,7 @@ p {
 }
 
 .demo-page-container {
-    padding: 2vh 0;
+    padding: 2vh 1vw;
     margin: auto;
     display: flex;
     flex-direction: column;
