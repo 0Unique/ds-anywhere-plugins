@@ -4,6 +4,8 @@ import Emulator from "./emulator";
 import Entrypoint from "./entrypoint";
 import SettingsModal from "./settings";
 
+import noclip_plugin from "../plugins/noclip/src/main";
+
 export function Main() {
   const [emulating, setEmulating] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);

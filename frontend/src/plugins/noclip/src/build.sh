@@ -1,0 +1,1 @@
+emcc -I "../../../../../../wasmelonDS/src" -I "../../../../../../wasmelonDS/src/frontend" -I "../../../../../../wasmelonDS/src/frontend/wasm" -D BUILD_QT_SDL=OFF -D ENABLE_OGLRENDERER=OFF -sIMPORTED_MEMORY main.cpp -o test.js
