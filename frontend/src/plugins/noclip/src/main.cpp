@@ -19,20 +19,12 @@ unsigned int get_y() {
     return *(unsigned int*)&emu->nds->MainRAM[0x143b24];
 }
 
-void frame(){
-    /*if (emu == nullptr) return;
-    NDS* nds = emu->getNDS();
+void set_x(unsigned int  val) {
+    *(unsigned int*)&emu->nds->MainRAM[0x143b20] = val;
+}
 
-    if (nds->IsRunning()) {
-        unsigned int& playerX = *(unsigned int*)&nds->MainRAM[0x143b20];
-        unsigned int& playerY = *(unsigned int*)&nds->MainRAM[0x143b24];
-        int speed = window->ui->speedBox->value();
-        if (upPress) playerY -= speed;
-        if (downPress) playerY += speed;
-        if (leftPress) playerX -= speed;
-        if (rightPress) playerX += speed;
-        window->ui->posLabel->setText(QString::fromStdString("(" + std::to_string(playerX) + ", " + std::to_string(playerY) + ")"));
-        }*/
+void set_y(unsigned int val) {
+    *(unsigned int*)&emu->nds->MainRAM[0x143b24] = val;
 }
 
 
@@ -41,4 +33,6 @@ EMSCRIPTEN_BINDINGS(my_module) {
     function("init_emu", &init_emu);
     function("get_x", &get_x);
     function("get_y", &get_y);
+    function("set_x", &set_x);
+    function("set_y", &set_y);
 }

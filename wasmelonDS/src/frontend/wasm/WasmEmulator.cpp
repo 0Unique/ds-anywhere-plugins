@@ -244,7 +244,7 @@ namespace wasmelon {
         }, addr, size);
   }
 
-  /!!! dont even need the emu reference anymore
+  //!!! dont even need the emu reference anymore
   void ARM9write(void* self, unsigned int addr, unsigned char size, void* value){
     WasmEmulator* emu = (WasmEmulator*)self;
     if (emu != nullptr)
