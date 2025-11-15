@@ -25,6 +25,7 @@ export default function PluginContainer(): any {
         let event = evt as PointerEvent;
         if (event.ctrlKey) {
           selectedWindow = event.target as HTMLElement | null;
+          console.log("selected elem: " + selectedWindow);
         } else {
           pz.handleDown(event);
         }
@@ -34,6 +35,8 @@ export default function PluginContainer(): any {
           const mouseX = event.clientX;
           const mouseY = event.clientY;
           if (prevX != 0 && prevY != 0) {
+            console.log("change X: " + (mouseX - prevX));
+            console.log("change Y: " + (mouseY - prevY));
             selectedWindow.style.left += mouseX - prevX;
             selectedWindow.style.top += mouseY - prevY;
           }
