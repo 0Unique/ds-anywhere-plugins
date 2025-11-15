@@ -1,10 +1,10 @@
-import './app.css'
-import { Main } from './components/main';
+import "./app.css";
+import { Main } from "./components/main";
 
 export function App() {
   return (
     <>
-      <div>
+      <div class="testc">
         <Main />
       </div>
     </>

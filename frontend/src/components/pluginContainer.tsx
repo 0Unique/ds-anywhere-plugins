@@ -10,7 +10,7 @@ export default function PluginContainer(): any {
     //let pluginContainer = document.querySelector("#plugin-container");
 
     var elem: HTMLElement | SVGElement | null =
-      document.querySelector(".full-container");
+      document.querySelector(".testc");
     if (elem != null) {
       var pz = Panzoom(elem, {
         zoomDoubleClickSpeed: 1, // disables zoom on double click
