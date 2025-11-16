@@ -11,7 +11,7 @@ declare global {
 export default function Noclip() {
   useEffect(() => {
     const handleKeyPress = (event: Event) => {
-      if (keybindManager.checkEvent(event, "up")) {
+      if (keybindManager.checkEvent(event as KeyboardEvent, "up")) {
         event.preventDefault();
         window.Noclip.set_y(window.Noclip.get_y() - 100);
       }
