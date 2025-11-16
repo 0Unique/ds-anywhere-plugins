@@ -1,0 +1,101 @@
+.keyboard-binder {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.keyboard-binder h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.bindings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.binding-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.binding-action {
+    flex: 1;
+    font-weight: 500;
+    color: #495057;
+}
+
+.binding-key {
+    flex: 1;
+    text-align: center;
+    font-family: "Courier New", monospace;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    min-height: 24px;
+}
+
+.binding-controls {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.record-button,
+.clear-button,
+.cancel-button {
+    padding: 6px 12px;
+    border: 1px solid #6c757d;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.record-button:hover:not(:disabled),
+.clear-button:hover:not(:disabled),
+.cancel-button:hover:not(:disabled) {
+    background: #e9ecef;
+}
+
+.record-button:disabled,
+.clear-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.recording-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.recording-indicator {
+    padding: 6px 12px;
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 4px;
+    color: #856404;
+    font-size: 14px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
