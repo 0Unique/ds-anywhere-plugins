@@ -67,6 +67,23 @@ export default function PluginContainer(): any {
         prevX = 0;
         prevY = 0;
       });
+      document.addEventListener("keydown", (event) => {
+        if (event.ctrlKey) {
+          // Control key is pressed
+          Array.from(pluginContainer.children).forEach((child: Element) => {
+            (child as HTMLElement).style.pointerEvents = "none";
+          });
+        }
+      });
+
+      document.addEventListener("keyup", (event) => {
+        if (!event.ctrlKey) {
+          // Control key is released
+          Array.from(pluginContainer.children).forEach((child: Element) => {
+            (child as HTMLElement).style.pointerEvents = "auto"; // Revert to default
+          });
+        }
+      });
     }
   }, []);
 
