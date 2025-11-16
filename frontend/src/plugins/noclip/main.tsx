@@ -1,6 +1,5 @@
 import "./main.css";
-
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import {
   KeyboardBinder,
   useKeyBindings,
@@ -14,6 +13,7 @@ declare global {
 
 export default function Noclip(): any {
   const [bindings, setBindings] = useState<KeyBinding[]>([]);
+  const [speed, setSpeed] = useState(200);
 
   useKeyBindings(bindings);
 
@@ -21,10 +21,10 @@ export default function Noclip(): any {
     { id: "move-up", action: "Move Up", defaultKey: "I" },
     { id: "move-right", action: "Move Right", defaultKey: "L" },
     { id: "move-left", action: "Move Left", defaultKey: "J" },
-    { id: "move-down", action: "Move DOwn", defaultKey: "K" },
+    { id: "move-down", action: "Move Down", defaultKey: "K" },
   ];
 
-  useState(() => {
+  useEffect(() => {
     const handleKeyAction = (event: CustomEvent) => {
       const { bindingId } = event.detail;
 
@@ -33,16 +33,16 @@ export default function Noclip(): any {
 
       switch (bindingId) {
         case "move-up":
-          window.noclip.set_y(y - 100);
+          window.noclip.set_y(y - speed);
           break;
         case "move-down":
-          window.noclip.set_y(y + 100);
+          window.noclip.set_y(y + speed);
           break;
         case "move-left":
-          window.noclip.set_x(x - 100);
+          window.noclip.set_x(x - speed);
           break;
         case "move-right":
-          window.noclip.set_x(x + 100);
+          window.noclip.set_x(x + speed);
           break;
       }
     };
@@ -56,7 +56,12 @@ export default function Noclip(): any {
         "keyBindingTriggered",
         handleKeyAction as EventListener,
       );
-  });
+  }, [speed]); // Add speed as dependency
+
+  const handleSpeedChange = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    setSpeed(Number(target.value));
+  };
 
   return (
     <>
@@ -65,6 +70,7 @@ export default function Noclip(): any {
         <h3>player pos</h3>
         <h3 id="pos"></h3>
         <KeyboardBinder bindings={bindingConfigs} onChange={setBindings} />
+        <input type="number" value={speed} onInput={handleSpeedChange} />
       </div>
       <script src="static/test.js"></script>
       <script src="static/load_noclip_plugin.js"></script>
