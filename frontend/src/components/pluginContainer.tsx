@@ -71,7 +71,9 @@ export default function PluginContainer(): any {
         if (event.ctrlKey) {
           // Control key is pressed
           Array.from(pluginContainer.children).forEach((child: Element) => {
-            (child as HTMLElement).style.pointerEvents = "none";
+            Array.from(child.children).forEach((child: Element) => {
+              (child as HTMLElement).style.pointerEvents = "none";
+            });
           });
         }
       });
@@ -80,7 +82,9 @@ export default function PluginContainer(): any {
         if (!event.ctrlKey) {
           // Control key is released
           Array.from(pluginContainer.children).forEach((child: Element) => {
-            (child as HTMLElement).style.pointerEvents = "auto"; // Revert to default
+            Array.from(child.children).forEach((child: Element) => {
+              (child as HTMLElement).style.pointerEvents = "auto";
+            });
           });
         }
       });
