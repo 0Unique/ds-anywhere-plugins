@@ -9,8 +9,11 @@
         left: 0px;
         right: 0px;
         pointer-events: all !important;
-        > * > * {
-            pointer-events: inherit;
+        > * {
+            /* js sets pointer-events for this in PluginContainer component */
+            > * {
+                pointer-events: inherit;
+            }
         }
     }
 }

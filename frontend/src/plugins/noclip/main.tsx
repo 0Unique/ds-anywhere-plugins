@@ -9,6 +9,10 @@ import {
 
 declare global {
   var noclip: any;
+  var Noclip: (a: any) => any;
+  var wasmMemory: any;
+  var WebMelon: any;
+  var plugins: any;
 }
 
 export default function Noclip(): any {
@@ -23,6 +27,25 @@ export default function Noclip(): any {
     { id: "move-left", action: "Move Left", defaultKey: "J" },
     { id: "move-down", action: "Move Down", defaultKey: "K" },
   ];
+
+  useEffect(() => {
+    (async () => {
+      while (!window.hasOwnProperty("Noclip"))
+        //wait for wasm to load
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      var plug = await window.Noclip({ wasmMemory: wasmMemory });
+      plug.init_emu(window.WebMelon._internal.emulator.getEmuPtr());
+
+      plug.perFrame = () => {
+        const posElem = document.querySelector("#pos");
+        if (posElem) posElem.textContent = `(${plug.get_x()}, ${plug.get_y()})`;
+      };
+
+      window.plugins.push(plug);
+      window.noclip = plug;
+    })();
+  }, []);
 
   useEffect(() => {
     const handleKeyAction = (event: CustomEvent) => {
