@@ -1,3 +1,4 @@
+import "./main.css";
 import { useState, useEffect } from "preact/hooks";
 import {
   KeyboardBinder,

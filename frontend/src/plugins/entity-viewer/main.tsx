@@ -1,4 +1,3 @@
-import "./main.css";
 import { useState, useEffect } from "preact/hooks";
 
 declare global {
