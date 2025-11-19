@@ -46,6 +46,7 @@ export default function EntityViewer(): any {
       plug.perFrame = () => {
         if (self == null) return;
         let cur_room = plug.get_room();
+        console.log(`cur room: ${cur_room}`);
         if (room != cur_room) {
           // room changed
           let entList = document.querySelector("#entity-list-box");
