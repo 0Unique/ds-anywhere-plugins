@@ -22,7 +22,7 @@ function showEntityDetails(index: number, element: HTMLDivElement) {
   element.classList.add("bg-blue-200");
 
   // Show entity details in the details panel
-  let detailsPanel = document.querySelector(".b-2.border-black");
+  let detailsPanel = document.querySelector("#ent-details");
   if (detailsPanel != null)
     detailsPanel.innerHTML = `
     <h3 class="font-bold">Entity Details</h3>
@@ -88,7 +88,7 @@ export default function Noclip(): any {
             id="entity-list-box"
             class="flex flex-col overflow-y-scroll w-28 h-48 border-black border-2 m-2 p-1"
           ></div>
-          <div class="b-2 border-black m-2 p-1 w-auto">
+          <div id="ent-details" class="b-2 border-black m-2 p-1 w-auto">
             <p class="text-gray-500">Select an entity to view details</p>
           </div>
         </div>
