@@ -3,7 +3,7 @@ import "./pluginContainer.css";
 import panzoom from "panzoom";
 
 import Noclip from "../plugins/noclip/main";
-import EntityViewer from "../plugins/entity-viewer";
+import EntityViewer from "../plugins/entity-viewer/main";
 import { useEffect } from "preact/hooks";
 
 export default function PluginContainer(): any {
