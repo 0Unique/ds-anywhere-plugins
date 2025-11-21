@@ -4,7 +4,17 @@
 
 (() => {
   // Utility functions used throughout the SDK not exported outside of it.
+  let Module = async () => {
+    const memory = new WebAssembly.Memory({
+      initial: 200000,
+      maximum: 10000000,
+      shared: true,
+    });
 
+    while (!window.hasOwnProperty("WasmEmu"))
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    return await window.WasmEmu({ wasmMemory: memory });
+  };
   /**
    * Call all subscribers in the array when an event is fired.
    *
