@@ -15,7 +15,7 @@ set(WASM_EMULATOR_SOURCES
 )
 
 add_executable(wasmemulator ${WASM_EMULATOR_SOURCES})
-set_target_properties(wasmemulator PROPERTIES LINK_FLAGS "-lembind -lpthread -lidbfs.js -DDISABLE_OPENGL_INCLUDES -sINITIAL_MEMORY=1024MB")
+set_target_properties(wasmemulator PROPERTIES LINK_FLAGS "-lembind -lpthread -lidbfs.js -DDISABLE_OPENGL_INCLUDES -sINITIAL_MEMORY=1024MB -sIMPORTED_MEMORY=1")
 target_include_directories(wasmemulator PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 target_include_directories(wasmemulator PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/..")
 target_include_directories(wasmemulator PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../..")
